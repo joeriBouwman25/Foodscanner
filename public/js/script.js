@@ -25,44 +25,43 @@ function getAndRenderData () {
  </div>
 `;
 
-document.querySelector("main").innerHTML = markup;    
+document.querySelector("main section:first-of-type").innerHTML = markup;    
     })
     .catch(error => document.body.insertAdjacentHTML('beforebegin', error))
 }
 
-var video = document.querySelector("video");
+var video = document.querySelector("#video");
 
 if (navigator.mediaDevices.getUserMedia) {
-  navigator.mediaDevices.getUserMedia({ video: true })
-    .then(function (stream) {
-      video.srcObject = stream;
-    })
-    .catch(function (err0r) {
-      console.log("Something went wrong!");
-    });
-}
-
-
-// check compatibility
-if (!('BarcodeDetector' in window)) {
-    console.log('Barcode Detector is not supported by this browser.');
-  } else {
-    console.log('Barcode Detector supported!');
-  
-    // create new detector
-    var barcodeDetector = new BarcodeDetector({formats: ['code_39', 'codabar', 'ean_13']});
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(function (stream) {
+        video.srcObject = stream;
+      })
+      .catch(function (err0r) {
+        console.log("Something went wrong!");
+      });
   }
 
-  // check supported types
-BarcodeDetector.getSupportedFormats()
-.then(supportedFormats => {
-  supportedFormats.forEach(format => console.log(format));
-});
+// // check compatibility
+// if (!('BarcodeDetector' in window)) {
+//     console.log('Barcode Detector is not supported by this browser.');
+//   } else {
+//     console.log('Barcode Detector supported!');
+  
+//     // create new detector
+//     var barcodeDetector = new BarcodeDetector({formats: ['code_39', 'codabar', 'ean_13']});
+//   }
 
-barcodeDetector.detect(imageEl)
-.then(barcodes => {
-  barcodes.forEach(barcode => console.log(barcode.rawData));
-})
-.catch(err => {
-  console.log(err);
-})
+//   // check supported types
+// BarcodeDetector.getSupportedFormats()
+// .then(supportedFormats => {
+//   supportedFormats.forEach(format => console.log(format));
+// });
+
+// barcodeDetector.detect(imageEl)
+// .then(barcodes => {
+//   barcodes.forEach(barcode => console.log(barcode.rawData));
+// })
+// .catch(err => {
+//   console.log(err);
+// })
