@@ -42,14 +42,12 @@
                     }
             
                     const markup = `
-             <div class="person">
                     <img src=${product.img}>
                     <h2>${product.name} </h2>
                 <h3>
                     ${product.brand}
                 </h3>
                 <p class="location">${product.nutriscore}</p>
-             </div>
             `;
             
             document.querySelector("main section:first-of-type").innerHTML = markup;    
