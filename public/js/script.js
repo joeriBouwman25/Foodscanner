@@ -43,3 +43,10 @@ if (!('BarcodeDetector' in window)) {
     var barcodeDetector = new BarcodeDetector({formats: ['code_39', 'codabar', 'ean_13']});
   }
 
+  barcodeDetector.detect(imageEl)
+  .then(barcodes => {
+    barcodes.forEach(barcode => console.log(barcode.rawData));
+  })
+  .catch(err => {
+    console.log(err);
+  })
