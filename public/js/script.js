@@ -5,17 +5,15 @@
   
     async function detect() {
       const barcodeDetector = new BarcodeDetector();
-      const list = document.getElementById("barcode-list");
       let itemsFound = [];
       const mediaStream = await navigator.mediaDevices.getUserMedia({
         video: { facingMode: "environment" }
       });
     
-      const video = document.createElement("video");
+      const video = document.querySelector("video");
       video.srcObject = mediaStream;
       video.autoplay = true;
     
-      list.before(video);
     
 
       function render() {
@@ -25,43 +23,54 @@
             barcodes.forEach((barcode) => {
               if (!itemsFound.includes(barcode.rawValue)) {
                 itemsFound.push(barcode.rawValue);
-                const li = document.createElement("li");
-                li.innerHTML = barcode.rawValue;
                 const newBarcode = barcode.rawValue; 
-                list.appendChild(li);
+                // list.appendChild(li);
                 const getURL = 'https://world.openfoodfacts.org/api/v0/product/' + newBarcode+ '.json'
                 fetch(getURL).then(response => response.json())
-                .then(response => {
-                    console.log(response.product)
-            
+                .then(data => {
+                    if(data.status){
                     const product = {
-                        name: response.product.product_name,
-                        brand: response.product.brand_owner,
-                        nutriscore: response.product.nutrient_levels.fat,
-                        img: response.product.image_front_url
+                        name: data.product.product_name,
+                        barcode: barcode.rawValue,
+                        nutrimentsPer: data.product.nutrition_data_per,
+                        nutriscoreFat: data.product.nutriments.fat,
+                        nutriFatUnit: data.product.nutriments.fat_unit,
+                        nutriscoreSugars: data.product.nutriments.sugars,
+                        nutriSugarUnit: data.product.nutriments.sugars_unit,
+                        nutriscoreCarbohydrates: data.product.nutriments.carbohydrates,
+                        nutriCarboUnit: data.product.nutriments.carbohydrates_unit,
+                        img: data.product.image_front_url
                     }
             
-                    const markup = `
-                    <img src=${product.img}>
-                    <h2>${product.name} </h2>
-                <h3>
-                    ${product.brand}
-                </h3>
-                <p class="location">${product.nutriscore}</p>
+                const markup = `
+                    <section>
+                      <div>
+                        <img src=${product.img}>
+                        <h2>${product.name} </h2>
+                      </div>
+                      <h3>${product.barcode}</h3>
+                      <h3>Nutriments per ${product.nutrimentsPer}:</h3>
+                      <ul>
+                        <li>Fat: <p>${product.nutriscoreFat}${product.nutriFatUnit.toUpperCase()}</p></li>
+                        <li>Sugars: <p>${product.nutriscoreSugars}${product.nutriSugarUnit.toUpperCase()}</p></li>
+                        <li>Carbohydrates: <p>${product.nutriscoreCarbohydrates}${product.nutriCarboUnit.toUpperCase()}</p></li>
+                      </ul>
+                </section>
             `;
             
-            document.querySelector("main section:first-of-type").innerHTML = markup;    
-                })
+            document.querySelector("main section:first-of-type").insertAdjacentHTML('beforebegin', markup);    
+            } else{
+              console.log("niks kevonden")
+            }      
+          })
                 .catch(error => document.body.insertAdjacentHTML('beforebegin', error))
               }
             });
           })
           .catch(console.error);
       }
-  
-  // barcode getter
-  
-  // const barcode = "li.innerHTML";
+    
+
 
       (function renderLoop() {
         requestAnimationFrame(renderLoop);
