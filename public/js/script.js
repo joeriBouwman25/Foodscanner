@@ -1,6 +1,9 @@
 
-    
-      (async () => {
+    const scanButton = document.querySelector("section:nth-of-type(2) button")
+    const barcodeImg = document.querySelector("section:nth-of-type(2) img")
+
+      async function startCamera() {
+        barcodeImg.src = "images/border.png"
         const stream = await navigator.mediaDevices.getUserMedia({
           video: {
             facingMode: {
@@ -23,7 +26,7 @@
             getProductFromApi(barcodes[0].rawValue)
           }
         }, 100)
-        })();
+        };
 
         function getProductFromApi(barcode){
           const getURL = 'https://world.openfoodfacts.org/api/v0/product/' + barcode + '.json'
@@ -37,10 +40,12 @@
         })
       }
 
+      scanButton.addEventListener('click', startCamera)
+
       function renderProductData(barcode, data) {
                     const product = {
                         name: data.product.product_name,
-                        barcode: barcode.rawValue,
+                        barcode: barcode,
                         nutrimentsPer: data.product.nutrition_data_per,
                         nutriscoreFat: data.product.nutriments.fat,
                         nutriFatUnit: data.product.nutriments.fat_unit,
@@ -52,7 +57,7 @@
                     }
             
                 const markup = `
-                    <section>
+
                       <div>
                         <img src=${product.img}>
                         <h2>${product.name} </h2>
@@ -64,8 +69,8 @@
                         <li>Sugars: <p>${product.nutriscoreSugars}${product.nutriSugarUnit.toUpperCase()}</p></li>
                         <li>Carbohydrates: <p>${product.nutriscoreCarbohydrates}${product.nutriCarboUnit.toUpperCase()}</p></li>
                       </ul>
-                </section>
+
             `;
             
-            document.querySelector("main section:first-of-type").insertAdjacentHTML('beforebegin', markup);    
+            document.querySelector("main section:first-of-type").innerHTML = markup;    
         } 

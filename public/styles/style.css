@@ -19,8 +19,29 @@ header h1 {
 }
 
 main {
-  /* background-color: rgb(247, 164, 39); */
-  /* background-image: url("file:///Users/joeribouwman/Documents/CMD/Minor%20WebDev/web-app-from-scratch-2122-main/foodscanner/public/images/fruit_background.png"); */
+  background-color: rgb(241, 241, 241);
+  position: relative;
+  height: 100vh;
+}
+
+/* main::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  background-image: url("../images/fruit_background.png");
+} */
+
+button {
+  height: 4em;
+  border: none;
+  font-family: "rig solid";
+  color: #fff;
+  background-color: orange;
+  border-radius: 14px;
 }
 
 main section:last-of-type {
@@ -75,7 +96,7 @@ div {
   position: relative;
 }
 
-main section h2 {
+main section:first-of-type h2 {
   position: absolute;
   bottom: -0.38em;
   margin: 0;
