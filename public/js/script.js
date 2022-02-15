@@ -1,21 +1,11 @@
-
+  // Global variables
     const scanButton = document.querySelector("section:nth-of-type(2) button")
     const barcodeImg = document.querySelector("section:nth-of-type(2) img")
+    const video = document.querySelector("video");
 
-      async function startCamera() {
-        barcodeImg.src = "images/border.png"
-        const stream = await navigator.mediaDevices.getUserMedia({
-          video: {
-            facingMode: {
-              ideal: "environment"
-            }
-          },
-          audio: false
-        });
-        const video = document.querySelector("video");
-        video.srcObject = stream;
-        await video.play();
-        
+
+      // Create barcode scanner
+      async function barcodeDetector() {
         const barcodeDetector = new BarcodeDetector();
         window.setInterval(async () => {
           const barcodes = await barcodeDetector.detect(video);
@@ -27,6 +17,39 @@
           }
         }, 100)
         };
+
+
+      //  Turn camera On and Off
+        async function toggleCamera() {
+          if(scanButton.value == 1){
+
+          const stream = await navigator.mediaDevices.getUserMedia({
+            video: {
+              facingMode: {
+                ideal: "environment"
+              }
+            },
+            audio: false
+          });
+          video.srcObject = stream;
+          await video.play(); 
+          
+          barcodeImg.src = "images/border.png"
+          scanButton.innerHTML = "Stop met scannen"
+          scanButton.value = 0
+        } 
+
+        else {
+          
+          video.srcObject = stop()
+          barcodeImg.src = "images/barcode.png"
+          scanButton.innerHTML = "Start met scannen"
+          scanButton.value = 1
+
+        }
+        }
+
+        scanButton.addEventListener('click', toggleCamera)
 
         function getProductFromApi(barcode){
           const getURL = 'https://world.openfoodfacts.org/api/v0/product/' + barcode + '.json'
@@ -40,7 +63,7 @@
         })
       }
 
-      scanButton.addEventListener('click', startCamera)
+      
 
       function renderProductData(barcode, data) {
                     const product = {
