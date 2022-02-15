@@ -1,34 +1,43 @@
-    window.onload = () => {
-      detect();
-    };
-  
-  
-    async function detect() {
-      const barcodeDetector = new BarcodeDetector();
-      let itemsFound = [];
-      const mediaStream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: "environment" }
-      });
-    
-      const video = document.querySelector("video");
-      video.srcObject = mediaStream;
-      video.autoplay = true;
-    
-    
 
-      function render() {
-        barcodeDetector
-          .detect(video)
-          .then((barcodes) => {
-            barcodes.forEach((barcode) => {
-              if (!itemsFound.includes(barcode.rawValue)) {
-                itemsFound.push(barcode.rawValue);
-                const newBarcode = barcode.rawValue; 
-                // list.appendChild(li);
-                const getURL = 'https://world.openfoodfacts.org/api/v0/product/' + newBarcode+ '.json'
+    
+      (async () => {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: {
+            facingMode: {
+              ideal: "environment"
+            }
+          },
+          audio: false
+        });
+        const video = document.querySelector("video");
+        video.srcObject = stream;
+        await video.play();
+        
+        const barcodeDetector = new BarcodeDetector();
+        window.setInterval(async () => {
+          const barcodes = await barcodeDetector.detect(video);
+          if (barcodes.length <= 0){ 
+            return; 
+          } else {
+            console.log("geslaagd")
+            getProductFromApi(barcodes[0].rawValue)
+          }
+        }, 100)
+        })();
+
+        function getProductFromApi(barcode){
+          const getURL = 'https://world.openfoodfacts.org/api/v0/product/' + barcode + '.json'
                 fetch(getURL).then(response => response.json())
                 .then(data => {
-                    if(data.status){
+                    if(data.status){ 
+                      renderProductData(barcode, data)
+                } else {
+                  console.log("conjo")
+                }
+        })
+      }
+
+      function renderProductData(barcode, data) {
                     const product = {
                         name: data.product.product_name,
                         barcode: barcode.rawValue,
@@ -59,21 +68,4 @@
             `;
             
             document.querySelector("main section:first-of-type").insertAdjacentHTML('beforebegin', markup);    
-            } else{
-              console.log("niks kevonden")
-            }      
-          })
-                .catch(error => document.body.insertAdjacentHTML('beforebegin', error))
-              }
-            });
-          })
-          .catch(console.error);
-      }
-    
-
-
-      (function renderLoop() {
-        requestAnimationFrame(renderLoop);
-        render();
-      })();
-    }
+        } 
