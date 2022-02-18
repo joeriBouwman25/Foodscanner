@@ -6,6 +6,7 @@
 
       // Create barcode scanner
       async function barcodeDetector() {
+
         const barcodeDetector = new BarcodeDetector();
         window.setInterval(async () => {
           const barcodes = await barcodeDetector.detect(video);
@@ -19,7 +20,7 @@
         };
 
 
-      //  Turn camera On and Off
+      // //  Turn camera On and Off
         async function toggleCamera() {
           if(scanButton.value == 1){
 
@@ -37,6 +38,7 @@
           barcodeImg.src = "images/border.png"
           scanButton.innerHTML = "Stop met scannen"
           scanButton.value = 0
+          barcodeDetector()
         } 
 
         else {
@@ -45,6 +47,7 @@
           barcodeImg.src = "images/barcode.png"
           scanButton.innerHTML = "Start met scannen"
           scanButton.value = 1
+          return barcodeDetector();
 
         }
         }
@@ -86,7 +89,7 @@
                         <h2>${product.name} </h2>
                       </div>
                       <h3>${product.barcode}</h3>
-                      <h3>Nutriments per ${product.nutrimentsPer}:</h3>
+                      <h3>Nutrients per ${product.nutrimentsPer}:</h3>
                       <ul>
                         <li>Fat: <p>${product.nutriscoreFat}${product.nutriFatUnit.toUpperCase()}</p></li>
                         <li>Sugars: <p>${product.nutriscoreSugars}${product.nutriSugarUnit.toUpperCase()}</p></li>
