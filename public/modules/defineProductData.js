@@ -19,8 +19,23 @@ function defineProductData(barcode, data) {
         } 
     } = productData
 
+
+
+    const product = {
+        name: product_name,
+        barcode: barcode,
+        nutrimentsPer: nutrition_data_per,
+        nutriscoreFat: fat,
+        nutriFatUnit: fat_unit,
+        nutriscoreSugars: sugars,
+        nutriSugarUnit: sugars_unit,
+        nutriscoreCarbohydrates: carbohydrates,
+        nutriCarboUnit: carbohydrates_unit,
+        img: image_front_url
+    }
+
+
     renderProductData(product)
 }
 
 export { defineProductData }
-
