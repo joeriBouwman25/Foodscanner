@@ -52,7 +52,7 @@ main section img:first-of-type {
   filter: drop-shadow(2px 4px 6px black);
 }
 
-main section span {
+main section:nth-of-type(3) span {
   width: 50%;
   background-color: tomato;
   height: 1px;
@@ -61,6 +61,10 @@ main section span {
   z-index: 2;
   box-shadow: 0 0 4px red;
   animation: scanning 5s infinite;
+}
+
+.display {
+  display: none;
 }
 
 main section ul {
@@ -132,4 +136,81 @@ footer a {
   font-size: 0.8em;
   text-decoration: none;
   color: rgb(143, 97, 28);
+}
+p {
+  font-family: "Libre Barcode 128", cursive;
+  font-size: 100px;
+  color: #fff;
+  text-shadow: 1px 1px 1px black;
+}
+
+section:nth-of-type(2) {
+  position: absolute;
+  left: 50%;
+  top: 29%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  display: none;
+  z-index: 3;
+}
+
+section:nth-of-type(2) p {
+  position: relative;
+  animation: 3.4s BarcodeRevealing infinite;
+}
+
+section:nth-of-type(2) span {
+  position: absolute;
+  left: -3px;
+  top: 34%;
+  height: 62px;
+  width: 100%;
+  background: #fff;
+  box-shadow: 1px 1px 1px black;
+  border-radius: 6px;
+  animation: 1.7s BarcodeOverlay forwards infinite;
+  animation-timing-function: ease-out;
+}
+
+@keyframes BarcodeOverlay {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  50% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  51% {
+    transform-origin: right;
+  }
+
+  100% {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+}
+
+@keyframes BarcodeRevealing {
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 0;
+  }
+  26% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  76% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
 }
