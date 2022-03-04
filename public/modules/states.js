@@ -1,5 +1,6 @@
 //different UI states
 
+
 //Loading state 
 function loadingState() {
     const loader = document.querySelector('section:nth-of-type(2)')
@@ -21,6 +22,7 @@ function loadingState() {
             loader.style.display = 'none'
             laser.style.display = 'block'
             clearInterval(myInterval)
+            // window.location.hash = '#productData';
         }
     
     }

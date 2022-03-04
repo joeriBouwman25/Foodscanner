@@ -21,7 +21,7 @@ function defineProductData(barcode, data) {
 
 
 
-    const product = {
+   const product = {
         name: product_name,
         barcode: barcode,
         nutrimentsPer: nutrition_data_per,
@@ -33,9 +33,7 @@ function defineProductData(barcode, data) {
         nutriCarboUnit: carbohydrates_unit,
         img: image_front_url
     }
-
-
     renderProductData(product)
 }
 
-export { defineProductData }
+export { defineProductData}

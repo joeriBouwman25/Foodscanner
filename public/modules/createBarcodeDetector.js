@@ -9,9 +9,7 @@ function createBarcodeDetector() {
           const barcodes = await barcodeDetector.detect(video);
           if (!barcodes.length <= 0){ 
           getProductFromApi(barcodes[0].rawValue)
-          } else {
-            return; 
-          }
+          } 
         }, 100)
     }
  

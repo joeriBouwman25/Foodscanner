@@ -1,3 +1,5 @@
+
+
 function renderProductData(product) {
     const markup = `
         <div>
@@ -14,6 +16,7 @@ function renderProductData(product) {
     `;
 
     document.querySelector("main section:first-of-type").innerHTML = markup;    
+    window.location.hash = '#productData';
 }
 
 export{ renderProductData }

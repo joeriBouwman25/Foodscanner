@@ -5,11 +5,12 @@ function getProductFromApi(barcode){
           fetch(url + barcode + 'json')
           .then(response => response.json())
           .then(data => {
-              if(data.status){ 
+              if(data.status == 1){ 
                 defineProductData( barcode, data)
                 console.log(data)
           } else {
-            console.log(data)
+            window.location.hash = "#error"
+            console.log(data.status_verbose)
           }
   })
 }
