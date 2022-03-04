@@ -1,18 +1,17 @@
 import { defineProductData } from "./defineProductData.js"
 
-function getProductFromApi(barcode){
+async function getProductFromApi(barcode){
     const url = 'https://world.openfoodfacts.org/api/v0/product/'
-          fetch(url + barcode + 'json')
-          .then(response => response.json())
-          .then(data => {
-              if(data.status == 1){ 
-                defineProductData( barcode, data)
-                console.log(data)
+    const data = await fetch(url + barcode + 'json')
+    const res = await data.json()
+
+              if(res.status == 1){ 
+                defineProductData( barcode, res)
+                console.log(res)
           } else {
             window.location.hash = "#error"
-            console.log(data.status_verbose)
+            console.log(res.status_verbose)
           }
-  })
 }
 
 export{ getProductFromApi }
