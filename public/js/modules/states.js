@@ -22,13 +22,9 @@ function loadingState() {
             loader.style.display = 'none'
             laser.style.display = 'block'
             clearInterval(myInterval)
-            // window.location.hash = '#productData';
         }
     
     }
-
-    // console.log(video.currentTime)
-
 }
 
 export { loadingState }

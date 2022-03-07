@@ -21,14 +21,16 @@
       <h1>🍒Foodscan</h1>
     </header>
     <main>
-      <section data-route="productData"></section>
+      <section data-route="productData">
+        <button><a href="#scanner"></a></button>
+      </section>
 
       <section data-route="loading">
         <p>Hello</p>
         <span></span>
       </section>
 
-      <section data-route="camera">
+      <section data-route="scanner">
         <img src="images/barcode.png" alt="" />
         <span> <!-- span voor laser straal stylen --></span>
         <video></video>
@@ -38,13 +40,16 @@
       </section>
 
       <section class="active" data-route="#">
-        <h2>
-          Krijg product informatie door een barcode met je camera te scannen
-        </h2>
+        <h2>Activeer je camera om te starten met scannen</h2>
         <button>
-          <a href="#camera"><i class="fa fa-video"></i></a>
+          <a href="#scanner"><i class="fa fa-video"></i></a>
         </button>
+        <article>
+          <h3>Nog geen producten gevonden</h3>
+          <i class="fas fa-shopping-cart"></i>
+        </article>
       </section>
+
       <section data-route="error">
         <h2>Sorry we konden geen informatie ophalen voor dit product :(</h2>
       </section>
