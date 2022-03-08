@@ -1,14 +1,7 @@
   //import script files
   import { handleRoutes } from './modules/routes.js'
-  import {renderProductData} from './modules/data.js'
+
+  // const filterSection = document.querySelector('section:nth-of-type(6)')
+  // filterSection.classList.remove('display')
 
     handleRoutes()
-  // const data = getProductFromApi()
-  //   console.log(data)
-
-
-
-
-      
-// renderProductData()
-      

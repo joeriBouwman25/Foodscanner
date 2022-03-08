@@ -1,3 +1,4 @@
+
 export function updateUI(route) {
     const sections = document.querySelectorAll('section');
     const activeSection = document.querySelector(`[data-route=${route}]`);

@@ -1,4 +1,3 @@
-// import { loadingState } from "./states.js";
 
 const video = document.querySelector("video")
 
@@ -17,20 +16,6 @@ export async function startCameraStream() {
   
     }
 
-    
-//  Turn camera Off
-export function stopCameraStream() {
-    const tracks = video.srcObject.getTracks()
-        
-    tracks.forEach(function(track) {
-        track.stop();
-    });
-
-    video.srcObject = null
-    for (let i = 1; i < 99999; i++)
-    window.clearInterval(i);
-}
-  
 // Create barcode scanner
 export function detectBarcode() {
     const barcodeDetector = new BarcodeDetector()
@@ -39,7 +24,7 @@ export function detectBarcode() {
           const barcodes = await barcodeDetector.detect(video);
           if (!barcodes.length <= 0){ 
             window.location.hash = '#' + barcodes[0].rawValue;
-            
+
           return barcodes[0].rawValue
           } 
         }, 100)

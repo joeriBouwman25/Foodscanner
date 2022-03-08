@@ -51,7 +51,6 @@ export async function cleanProductData(data) {
 
 // Render data in HTML
 export async function renderProductData(product) {
-
     const markup = `
         <div>
             <img src=${product.img}>
