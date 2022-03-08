@@ -1,8 +1,6 @@
 //different UI states
-
-
 //Loading state 
-function loadingState() {
+export function loadingState() {
     const loader = document.querySelector('section:nth-of-type(2)')
     const video = document.querySelector('video')
     const barcodeImg = document.querySelector("section:nth-of-type(3) img")
@@ -12,7 +10,6 @@ function loadingState() {
 
     function myTimer() {
         if(video.readyState === 0) {
-            console.log(loader)
             loader.style.display = 'block'
             barcodeImg.style.display = 'none'
             laser.style.display = 'none'
@@ -26,5 +23,3 @@ function loadingState() {
     
     }
 }
-
-export { loadingState }

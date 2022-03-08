@@ -16,7 +16,6 @@ export async function getProductFromApi(barcode){
 // Clean Json Data
 export async function cleanProductData(data) {
     const  productData = data.product
-    console.log(productData)
     const { 
         product_name, 
         image_front_url, 
