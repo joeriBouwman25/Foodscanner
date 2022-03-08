@@ -8,7 +8,7 @@ export async function getProductFromApi(barcode){
                 return res
 
           } else {
-            console.log(res.status_verbose)
+              return Promise.reject(res.status_verbose)
           }
 }
 
@@ -60,7 +60,7 @@ export async function renderProductData(product) {
         <h3>${product.barcode}</h3>
         <h3>Nutrients per ${product.nutrimentsPer}:</h3>
         <ul>
-            <li>Fat: <p>${product.nutriscoreFat}${product.nutriFatUnit.toUpperCase()}</p></li>
+            <li>Fat:  <p> ${product.nutriscoreFat}${product.nutriFatUnit.toUpperCase()}</p></li>
             <li>Sugars: <p>${product.nutriscoreSugars}${product.nutriSugarUnit.toUpperCase()}</p></li>
             <li>Carbohydrates: <p>${product.nutriscoreCarbohydrates}${product.nutriCarboUnit.toUpperCase()}</p></li>
         </ul>
@@ -68,6 +68,6 @@ export async function renderProductData(product) {
     `;
 
     
-    document.querySelector("main section:first-of-type").innerHTML = markup;    
+    document.querySelector("main section:nth-of-type(3)").innerHTML = markup;    
     
 }

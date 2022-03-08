@@ -20,7 +20,9 @@ export function handleRoutes() {
             getProductFromApi(barcode)
             .then(response => cleanProductData(response))
             .then(product => renderProductData(product))
+            
             .then(() => { updateUI('productData')})
+            .catch(()=> updateUI('error'))
             }     
 })
 }

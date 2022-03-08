@@ -19,17 +19,15 @@
   </head>
   <body>
     <header>
-      <h1>🍒Foodscan</h1>
+      <h1>🍒 Foodscan</h1>
     </header>
     <main>
-      <section data-route="productData"></section>
-
-      <section data-route="loading">
-        <p>Hello</p>
-        <span></span>
+      <section class="active" data-route="#">
+        <h2>Activeer je camera om te starten met scannen</h2>
+        <button>
+          <a href="#scanner"><i class="fa fa-video"></i></a>
+        </button>
       </section>
-
-      <!-- <section data-route="error"></section> -->
 
       <section data-route="scanner">
         <img src="images/border.png" alt="" />
@@ -40,42 +38,53 @@
         </button>
       </section>
 
-      <section class="active" data-route="#">
-        <h2>Activeer je camera om te starten met scannen</h2>
-        <button>
-          <a href="#scanner"><i class="fa fa-video"></i></a>
-        </button>
-        <article>
-          <h3>Filters</h3>
-          <input
-            type="range"
-            min="1"
-            max="100"
-            value="50"
-            class="slider"
-            id="myRange"
-          />
-          <input
-            type="range"
-            min="1"
-            max="100"
-            value="50"
-            class="slider"
-            id="myRange"
-          />
-          <input
-            type="range"
-            min="1"
-            max="100"
-            value="50"
-            class="slider"
-            id="myRange"
-          />
-        </article>
+      <section data-route="productData"></section>
+
+      <section data-route="loading">
+        <p>Hello</p>
+        <span></span>
       </section>
 
       <section data-route="error">
-        <h2>Sorry we konden geen informatie ophalen voor dit product :(</h2>
+        <h2>Sorry het lijkt er op dat deze barcode niet herkend wordt..</h2>
+        <h3>Probeer het opnieuw met een andere barcode</h3>
+        <button>
+          <a href="#scanner"><i class="far fa-grin-beam-sweat"></i></a>
+        </button>
+      </section>
+
+      <section id="filters">
+        <h3>Filters</h3>
+        <input
+          id="fats"
+          type="range"
+          min="1"
+          max="100"
+          value="50"
+          class="slider"
+          id="myRange"
+        />
+        <label for="fats">Fat</label>
+        <input
+          id="sugar"
+          type="range"
+          min="1"
+          max="100"
+          value="50"
+          class="slider"
+          id="myRange"
+        />
+        <label for="sugar">Sugar</label>
+        <input
+          id="carbo"
+          type="range"
+          min="1"
+          max="100"
+          value="50"
+          class="slider"
+          id="myRange"
+        />
+        <label for="carbo">Carbohydrates</label>
       </section>
     </main>
     <!-- <footer>

@@ -38,9 +38,8 @@ export function detectBarcode() {
     window.setInterval(async () => {
           const barcodes = await barcodeDetector.detect(video);
           if (!barcodes.length <= 0){ 
-            // console.log(await barcodes[0].rawValue)
             window.location.hash = '#' + barcodes[0].rawValue;
-
+            
           return barcodes[0].rawValue
           } 
         }, 100)
