@@ -58,13 +58,13 @@ export async function renderProductData(product) {
             <h2>${product.name} </h2>
         </div>
         <h3>${product.barcode}</h3>
-        <h3>Nutrients per ${product.nutrimentsPer}:</h3>
         <ul>
-            <li>Fat:  <p> ${product.nutriscoreFat}${product.nutriFatUnit.toUpperCase()}</p></li>
-            <li>Sugars: <p>${product.nutriscoreSugars}${product.nutriSugarUnit.toUpperCase()}</p></li>
-            <li>Carbohydrates: <p>${product.nutriscoreCarbohydrates}${product.nutriCarboUnit.toUpperCase()}</p></li>
+            <li>Fat:<p> ${product.nutriscoreFat.toFixed(2)} ${product.nutriFatUnit.toUpperCase()}</p></li>
+            <li>Sugars: <p>${product.nutriscoreSugars.toFixed(2)} ${product.nutriSugarUnit.toUpperCase()}</p></li>
+            <li>Carbohydrates: <p>${product.nutriscoreCarbohydrates.toFixed(2)} ${product.nutriCarboUnit.toUpperCase()}</p></li>
         </ul>
-        <button><a href="#scanner">back</a></button>
+        <h3>Nutrients per ${product.nutrimentsPer}</h3>
+        <button><a href="#scanner"><i class="fa fa-video"></i></a></button>
     `;
 
     
