@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Foodscanner</title>
     <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/qij4xfa.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Libre+Barcode+128"
       rel="stylesheet"
@@ -23,13 +24,15 @@
     <main>
       <section data-route="productData"></section>
 
-      <section>
+      <section data-route="loading">
         <p>Hello</p>
         <span></span>
       </section>
 
+      <!-- <section data-route="error"></section> -->
+
       <section data-route="scanner">
-        <img src="images/barcode.png" alt="" />
+        <img src="images/border.png" alt="" />
         <span> <!-- span voor laser straal stylen --></span>
         <video></video>
         <button>

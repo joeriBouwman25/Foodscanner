@@ -51,6 +51,7 @@ export async function cleanProductData(data) {
 
 // Render data in HTML
 export async function renderProductData(product) {
+
     const markup = `
         <div>
             <img src=${product.img}>
@@ -66,6 +67,7 @@ export async function renderProductData(product) {
         <button><a href="#scanner">back</a></button>
     `;
 
+    
     document.querySelector("main section:first-of-type").innerHTML = markup;    
     
 }

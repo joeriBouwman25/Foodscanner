@@ -1,6 +1,6 @@
 import { cleanProductData, getProductFromApi, renderProductData } from './data.js'
-import { createBarcodeDetector, startCameraStream } from './scanner.js'
-import { loadingState } from './states.js'
+import { detectBarcode, startCameraStream } from './scanner.js'
+// import { loadingState } from './states.js'
 import { updateUI } from './ui.js'
 import './vendor/routie.min.js'
 
@@ -8,18 +8,19 @@ export function handleRoutes() {
     routie(
       {
       'scanner': () => {
+        updateUI('loading')
         startCameraStream().then( () => {
-            createBarcodeDetector()
-            loadingState()
-            updateUI('scanner')
+          updateUI('scanner')
+            detectBarcode()
 
         })
         },
         ':barcode': barcode => {
+          updateUI('loading')
             getProductFromApi(barcode)
             .then(response => cleanProductData(response))
             .then(product => renderProductData(product))
-            updateUI('productData')
+            .then(() => { updateUI('productData')})
             }     
 })
 }

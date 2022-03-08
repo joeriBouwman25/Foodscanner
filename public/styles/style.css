@@ -116,7 +116,6 @@ section:nth-of-type(2) {
   top: 29%;
   transform: translate(-50%, -50%);
   text-align: center;
-  display: none;
   z-index: 3;
   width: 40%;
 }
@@ -130,11 +129,11 @@ section:nth-of-type(2) p {
 
 section:nth-of-type(2) span {
   position: absolute;
-  left: -0.18em;
-  top: 34%;
-  height: 3.8em;
-  width: 100%;
-  background: #000;
+  left: -2.18em;
+  top: 33%;
+  height: 4em;
+  width: 12em;
+  background: #f7a427;
   border-radius: 0.6em;
   animation: 1.7s BarcodeOverlay forwards infinite;
   animation-timing-function: ease-out;
@@ -150,7 +149,7 @@ main section:nth-of-type(3) img:first-of-type {
   width: 62.5%;
   top: 0;
   right: 50%;
-  z-index: 1;
+  z-index: 10;
   padding: 0.5em;
   filter: drop-shadow(2px 4px 6px #000);
   transform: translateX(50%);
