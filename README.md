@@ -8,12 +8,16 @@
 
 🍒Foodscanner is an client side application that works with HTML CSS and JavaScript. The application implements the openFoodFacts API. For further information about this API you can check the following link: [https://world.openfoodfacts.org/data/](https://world.openfoodfacts.org/data)
 
-### Libraries
+## Libraries
 
 This project uses the following libraries:
 
 - barcode detector
 - Routie
+
+## User Story
+
+## Activity Diagram
 
 ## Author
 

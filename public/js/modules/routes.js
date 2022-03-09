@@ -1,6 +1,5 @@
 import { cleanProductData, getProductFromApi, renderProductData } from './data.js'
 import { detectBarcode, startCameraStream } from './scanner.js'
-// import { loadingState } from './states.js'
 import { updateUI } from './ui.js'
 import './vendor/routie.min.js'
 
