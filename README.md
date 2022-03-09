@@ -21,7 +21,7 @@ As a foodie, I want to be able to easily search and view information about a pro
 
 ## Activity Diagram
 
-<img src="https://github.com/joeriBouwman25/Foodscanner/blob/main/assets/activity%20diagram.png">
+<img src="https://github.com/joeriBouwman25/Foodscanner/blob/main/assets/activity%20diagram.png" width=800>
 
 ## Author
 
