@@ -17,7 +17,11 @@ This project uses the following libraries:
 
 ## User Story
 
+As a foodie, I want to be able to easily search and view information about a product while shopping, so that I can make a good choice whether it fits my diet.
+
 ## Activity Diagram
+
+<img src="https://github.com/joeriBouwman25/Foodscanner/blob/main/assets/activity%20diagram.jpg" height=400>
 
 ## Author
 
